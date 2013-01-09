@@ -1,0 +1,60 @@
+letters = {
+  ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..",   
+  ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", 
+  "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."         
+}
+
+numbers = {"-----", ".----", "..---", "...--", "....-", 
+   ".....", "-....", "--...", "---..", "----."}
+
+function sendMorse(letterCode)
+  if letterCode >= string.byte("A", 1) and letterCode <= string.byte("Z", 1) then
+    dashesAndDots = letters[letterCode-string.byte("A", 1)+1]
+    for i = 1, string.len(dashesAndDots) do
+      sendDashOrDot(string.byte(dashesAndDots, i))
+    end
+  end
+  if letterCode >= string.byte("a", 1) and letterCode <= string.byte("z", 1) then
+    dashesAndDots = letters[letterCode-string.byte("a", 1)+1]
+    for i = 1, string.len(dashesAndDots) do
+      sendDashOrDot(string.byte(dashesAndDots, i))
+    end
+  end
+  if letterCode >= string.byte("0", 1) and letterCode <= string.byte("9", 1) then
+    dashesAndDots = letters[letterCode-string.byte("0", 1)+1]
+    for i = 1, string.len(dashesAndDots) do
+      sendDashOrDot(string.byte(dashesAndDots, i))
+    end
+  end
+  if letterCode == string.byte(" ", 1) then
+    sendDashOrDot(0)
+  end
+end
+
+function sendDashOrDot(dashOrDot)
+  if dashOrDot == 46 then
+    rs.setOutput("left", true)
+    sleep(0.5)
+    rs.setOutput("left", false)
+    sleep(0.5)
+  elseif dashOrDot == 45 then
+    rs.setOutput("left", true)
+    sleep(1.5)
+    rs.setOutput("left", false)
+    sleep(1.5)
+  elseif dashOrDot == 0 then
+    sleep(3)
+  end
+end
+
+sleep(7)
+
+term.clear()
+term.setCursorPos(1, 1)
+print("Enter Message to Send")
+message = read()
+
+for i = 1, string.len(message) do
+  sendMorse(string.byte(message, i))
+end
+
