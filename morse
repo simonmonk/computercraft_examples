@@ -47,8 +47,6 @@ function sendDashOrDot(dashOrDot)
   end
 end
 
-sleep(7)
-
 term.clear()
 term.setCursorPos(1, 1)
 print("Enter Message to Send")
