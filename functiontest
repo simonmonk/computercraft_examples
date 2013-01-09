@@ -1,0 +1,9 @@
+function printWelcome() 
+  print("This program is written")
+  print("in the programming language Lua")
+  print("Lua comes from Brazil")
+end
+
+printWelcome()
+printWelcome()
+printWelcome()
