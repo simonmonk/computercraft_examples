@@ -1,0 +1,10 @@
+while true do
+  term.clear()
+  term.setCursorPos(1, 1)
+  print("Please enter message to send:")
+  message = read()
+  rednet.open("right")
+  rednet.broadcast(message)
+  rednet.close("right")
+  sleep(0.1)
+end
