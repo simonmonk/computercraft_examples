@@ -1,0 +1,17 @@
+rednet.open("right")
+while true do
+  id, message = rednet.receive(1)
+  if message == "r" then
+    turtle.turnRight()
+  elseif message == "l" then
+    turtle.turnLeft()
+  elseif message == "g" then
+    moving = true
+  elseif message == "s" then
+    moving = false
+  end
+  if moving then
+    turtle.forward()
+  end
+end
+  

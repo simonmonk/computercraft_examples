@@ -1,0 +1,14 @@
+while true do
+  rednet.open("right")
+  if rs.getInput("left") then
+    rednet.broadcast("l")
+  elseif rs.getInput("back") then
+    rednet.broadcast("r")
+  elseif rs.getInput("top") then
+    rednet.broadcast("g")
+  elseif rs.getInput("front") then
+    rednet.broadcast("s")
+  end
+  rednet.close("right")
+  sleep(0.9)
+end
